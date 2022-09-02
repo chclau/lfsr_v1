@@ -34,7 +34,7 @@ begin
 
   -- lfsr generate
   lfsr_pr : process (clk) 
-	begin
+  begin
     if (rising_edge(clk)) then
       if (rstn = '0') then
         lfsr <= (others=>'0');
