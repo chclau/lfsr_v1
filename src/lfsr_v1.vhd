@@ -17,7 +17,7 @@ library ieee;
   use ieee.std_logic_1164.all;
   use ieee.numeric_std.all;
 
-entity lfsr1 is
+entity lfsr_v1 is
   port (
     rstn   : in  std_logic;
     clk    : in  std_logic; 
@@ -25,7 +25,7 @@ entity lfsr1 is
   );
 end entity;
 
-architecture rtl of lfsr1 is
+architecture rtl of lfsr_v1 is
   signal lfsr 	    : std_logic_vector (3 downto 0); -- for lfsr register
   signal feedback 	: std_logic;                     -- lfsr feedback
 
