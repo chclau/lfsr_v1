@@ -3,7 +3,7 @@
 -- Engineer: Claudio Avi Chami - FPGA'er Website
 --           http://fpgaer.tech
 -- Create Date: 03.06.2022 11:01:05
--- Module Name: lfsr1.vhd
+-- Module Name: lfsr_v1.vhd
 -- Description: First part of LFSR tutorial
 -- 
 -- Dependencies: None
