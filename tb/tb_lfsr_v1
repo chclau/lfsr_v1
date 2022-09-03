@@ -1,0 +1,63 @@
+----------------------------------------------------------------------------------
+-- Company:  FPGA'er
+-- Engineer: Claudio Avi Chami - FPGA'er Website
+--           http://fpgaer.tech
+-- Create Date: 29.08.2022 
+-- Module Name: tb_lfsr_v1.vhd
+-- Description: test bench for lfsr
+--              
+-- Dependencies: lfsr_v1.vhd
+-- 
+-- Revision: 1
+-- Revision  1 - File Created
+-- 
+----------------------------------------------------------------------------------
+library ieee;
+  use ieee.std_logic_1164.all;
+	use ieee.numeric_std.ALL;
+    
+entity tb_lfsr_v1 is
+end entity;
+
+architecture test of tb_lfsr_v1 is
+
+    constant PERIOD  : time   := 10 ns;
+	
+    signal clk       : std_logic := '0';
+    signal rstn      : std_logic := '0';
+    signal rand      : std_logic;
+    signal endSim	   : boolean   := false;
+
+    component lfsr_v1 is
+    port (
+      rstn      : in  std_logic;                       
+      clk       : in  std_logic;               
+      rand      : out std_logic   
+    );
+    end component;
+    
+
+begin
+  clk     <= not clk after PERIOD/2;
+  rstn    <= '1' after  PERIOD*10;
+	endSim  <= true after PERIOD*80;
+
+	-- End the simulation
+	process 
+	begin
+		if (endSim) then
+			assert false 
+				report "End of simulation." 
+				severity failure; 
+		end if;
+		wait until (clk = '1');
+	end process;	
+
+    lfrs1_inst : lfsr_v1
+    port map (
+        clk      => clk,
+        rstn     => rstn,
+        rand     => rand
+    );
+
+end architecture;
